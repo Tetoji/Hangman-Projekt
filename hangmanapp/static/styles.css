@@ -1,0 +1,23 @@
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: rgba(0, 0, 0, 0.05);
+    margin: 0;
+}
+
+header {
+    background-color: rgb(95, 53, 53);
+    display: flex;
+    padding-left: 20px;
+    box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.1);
+    color: white;
+}
+
+.list-item {
+    background-color: white;
+    height: 60px;
+    box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.1);
+    padding-left: 20px;
+    display: flex;
+    align-items: center;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+}
