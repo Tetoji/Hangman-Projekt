@@ -44,6 +44,7 @@ body {
 
 .backButton
 {
+  margin-right: 1vw;
   display: flex;
   justify-content: flex-end;
   color: azure;
