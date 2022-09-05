@@ -63,8 +63,12 @@ body {
 
 #letterInputField
 {
-  margin-left: 1vw;
-  font-weight: bold;
+  background: transparent;
+  color: whitesmoke;
+  border: 2px;
+  border-style: dashed;
+  padding-left: 2%;
+  margin-left: 2vw;
 }
 
 .letter {
@@ -90,21 +94,14 @@ body {
 }
 
 button {
-  border-radius: 5%;
-  background-color: white;
-  color: black;
+  background-color: transparent;
+  color: whitesmoke;
   border-color: green;
-  border-style: solid;
+  border-style:none;
   font-size: 20px;
-  
 }
 
 button:hover{
-  border-radius: 5%;
-  background-color: white;
-  color: black;
-  border-color: green;
-  border-style: solid;
   font-size: 25px;
   font-weight: bold;
 }
