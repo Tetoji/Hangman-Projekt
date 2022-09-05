@@ -16,13 +16,14 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 
-from hangmanapp.views import game, hangman, menue
+from hangmanapp.views import game, hangman, menue, updateGame
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('hangman/', hangman),
     path('menue/', menue),
     path('game/', game),
+    path('updateGame/', updateGame),
 ]
 
 admin.site.index_title = "Hangman" 
