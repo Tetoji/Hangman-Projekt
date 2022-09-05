@@ -2,7 +2,7 @@
   min-width: 100vh;
   text-align: center;
   color: white;
-  font-size: 45px;
+  font-size: 70px;
   margin-bottom: 1vw;
 }
 
@@ -15,7 +15,7 @@ body {
     justify-content: center;
     align-items: center; */
   min-height: 100vh;
-  font-family: cursive;
+  font-family: 'Amatic SC';
 }
 
 /* .wordLine {
@@ -37,6 +37,31 @@ body {
   /* display: flex; */
 }
 
+.stuff{
+  display: flex;
+  margin-bottom: 5vw;
+}
+
+.backButton
+{
+  display: flex;
+  justify-content: flex-end;
+  color: azure;
+  flex: 1;
+}
+
+.letterInput{
+  font-size: 25px;
+  margin-left: 1vw;
+  flex: 1;
+}
+
+#letterInputField
+{
+  margin-left: 1vw;
+  font-weight: bold;
+}
+
 .letter {
   color: white;
   font-size: 50px;
@@ -44,17 +69,39 @@ body {
   margin-left: 37%;
 }
 
+/*
 .gridElement {
   display: grid;
   grid-template-areas:
     "letter"
     "line";
 }
+*/
 
 .letterElement {
   width: 8%;
   float: left;
   margin-left: 1%;
+}
+
+button {
+  border-radius: 5%;
+  background-color: white;
+  color: black;
+  border-color: green;
+  border-style: solid;
+  font-size: 20px;
+  
+}
+
+button:hover{
+  border-radius: 5%;
+  background-color: white;
+  color: black;
+  border-color: green;
+  border-style: solid;
+  font-size: 25px;
+  font-weight: bold;
 }
 
 .game-container {

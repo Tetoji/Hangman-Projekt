@@ -24,23 +24,33 @@
       href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
       rel="stylesheet"
     />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Amatic+SC&family=Rock+Salt&display=swap"
+      rel="stylesheet"
+    />
+
     <link href="{% static 'game.css' %}" rel="stylesheet" />
   </head>
 
   <body>
     <div class="header">Hangman</div>
 
-    <div>
-      <label for="letterInput" style="color: white">Eingabefeld</label>
-      <input
-        type="text"
-        name="letterInput"
-        maxlength="1"
-        onkeyup="checkLetter(event)"
-        id="letterInput"
-      />
-      <button type="button"
-      class="backToMenu">Zurück</button>
+    <div class="stuff">
+      <div class="letterInput">
+        <label for="letterInput" style="color: white">Eingabefeld</label>
+        <input
+          type="text"
+          id="letterInputField"
+          maxlength="1"
+          onkeyup="checkLetter(event)"
+        />
+      </div>
+      <div class="backButton"><button
+        type="button"
+          id="backToMenu"
+          onclick="window.location.href='http://localhost:8000/menue'">Zurück</button></div>
     </div>
 
     <div class="wordLines">
