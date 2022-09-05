@@ -25,6 +25,11 @@ header {
   padding: 1vw;
 }
 
+@font-face {
+  font-family: "EraserDust";
+  src: url(EraserDust.ttf) format("truetype");
+}
+
 body {
   background-image: url("Tafel_neu.jpeg");
   background-size: cover;
@@ -34,7 +39,8 @@ body {
   justify-content: center;
   align-items: center;
   min-height: 100vh;
-  font-family: 'Amatic SC';
+  font-family: "EraserDust";
+
   font-size: 30px;
 }
 

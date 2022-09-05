@@ -5,6 +5,10 @@
   font-size: 70px;
   margin-bottom: 1vw;
 }
+@font-face {
+  font-family: "EraserDust";
+  src: url(EraserDust.ttf) format("truetype");
+}
 
 body {
   padding: 3vw;
@@ -15,7 +19,7 @@ body {
     justify-content: center;
     align-items: center; */
   min-height: 100vh;
-  font-family: 'Amatic SC';
+  font-family: "EraserDust";
 }
 
 /* .wordLine {
