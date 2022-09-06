@@ -1,5 +1,10 @@
+
+
 function checkLetter(event) {
+    const wordLetters = JSON.parse(document.getElementById('wordLetters').textContent);
+    console.log(wordLetters)
     const checkedLetters = JSON.parse(document.getElementById('checkedLetters').textContent);
+    console.log(checkedLetters)
     const checkedLettersArray = checkedLetters.split(',')
     let formData = new FormData();
     let cookie = document.cookie;
@@ -41,4 +46,5 @@ function checkLetter(event) {
 
 function updateGame() {
     window.location.href = "//localhost:8000/updateGame/";
+    window.location.reload();
 }
