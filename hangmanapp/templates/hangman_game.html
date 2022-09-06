@@ -35,63 +35,69 @@
   </head>
 
   <body>
-    <div class="header">Hangman</div>
-    <div class="stuff">
-      <div class="letterInput">
-        <label for="letterInput" style="color: white">Eingabefeld:</label>
-        <input
-        name="letterInput"
-          type="text"
-          id="letterInput"
-          maxlength="1"
-          onkeyup="checkLetter(event)"
-		  autocomplete="off"
-		  autofocus
-		  onkeyup="checkLetter(event)">
-      </div>
-      <div class="backButton"><button
-        type="button"
-          id="backToMenu"
-          onclick="window.location.href='http://localhost:8000/menue'">Zurueck</button></div>
-    </div>
-
-    <div class="wordLines">
-      {% for letter in checkLetters %}
-      {% if letter != ',' %}
-      <div class="letterElement">
-        <div class="gridElement">
-          <span class="letter">{{letter}}</span>
-          <div class="wordLine"></div>
+    <div class="blackboard">
+      <div class="header">Hangman</div>
+      <div class="stuff">
+        <div class="letterInput">
+          <label for="letterInput" style="color: white">Eingabefeld:</label>
+          <input
+            name="letterInput"
+            type="text"
+            id="letterInput"
+            maxlength="1"
+            onkeyup="checkLetter(event)"
+            autocomplete="off"
+            autofocus
+            onkeyup="checkLetter(event)"
+          />
+        </div>
+        <div class="backButton">
+          <button
+            type="button"
+            id="backToMenu"
+            onclick="window.location.href='http://localhost:8000/menue'"
+          >
+            Zurueck
+          </button>
         </div>
       </div>
-      {% endif %}
-      {% endfor %}
-    </div>
 
-    <div class="game-container">
-      <svg height="250" width="200" class="figure-container">
-        <!-- Rod -->
-        <line x1="60" y1="20" x2="140" y2="20" />
-        <line x1="140" y1="20" x2="140" y2="50" />
-        <line x1="60" y1="20" x2="60" y2="230" />
-        <line x1="20" y1="230" x2="100" y2="230" />
+      <div class="wordLines">
+        {% for letter in wordLetters %} {% if letter != ',' %}
+        <div class="letterElement">
+          <div class="gridElement">
+            <span class="letter">{{letter}}</span>
+            <div class="wordLine"></div>
+          </div>
+        </div>
+        {% endif %} {% endfor %}
+      </div>
 
-        <!-- Head -->
-        <circle cx="140" cy="70" r="20" class="figure-part" />
-        <!-- Body -->
-        <line x1="140" y1="90" x2="140" y2="150" class="figure-part" />
-        <!-- Arms -->
-        <line x1="140" y1="120" x2="120" y2="100" class="figure-part" />
-        <line x1="140" y1="120" x2="160" y2="100" class="figure-part" />
-        <!-- Legs -->
-        <line x1="140" y1="150" x2="120" y2="180" class="figure-part" />
-        <line x1="140" y1="150" x2="160" y2="180" class="figure-part" />
-      </svg>
+      <div class="game-container">
+        <svg height="250" width="200" class="figure-container">
+          <!-- Rod -->
+          <line x1="60" y1="20" x2="140" y2="20" />
+          <line x1="140" y1="20" x2="140" y2="50" />
+          <line x1="60" y1="20" x2="60" y2="230" />
+          <line x1="20" y1="230" x2="100" y2="230" />
+
+          <!-- Head -->
+          <circle cx="140" cy="70" r="20" class="figure-part" />
+          <!-- Body -->
+          <line x1="140" y1="90" x2="140" y2="150" class="figure-part" />
+          <!-- Arms -->
+          <line x1="140" y1="120" x2="120" y2="100" class="figure-part" />
+          <line x1="140" y1="120" x2="160" y2="100" class="figure-part" />
+          <!-- Legs -->
+          <line x1="140" y1="150" x2="120" y2="180" class="figure-part" />
+          <line x1="140" y1="150" x2="160" y2="180" class="figure-part" />
+        </svg>
+      </div>
+
+      <!--transportiert die das wordLetters Array in die javaScript Datei-->
+      {{ wordLetters|json_script:"wordLetters" }} 
+      {{ checkedLetters|json_script:"checkedLetters" }}
+      <script src="{% static 'game_logik.js' %}"></script>
     </div>
-    
-    <!--transportiert die das wordLetters Array in die javaScript Datei-->
-    {{ wordLetters|json_script:"wordLetters" }}
-    {{ checkedLetters|json_script:"checkedLetters" }}
-    <script src="{% static 'game_logik.js' %}"></script>
   </body>
 </html>

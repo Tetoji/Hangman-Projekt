@@ -24,17 +24,29 @@ header {
 }
 
 body {
-  background-image: url("Tafel_neu.jpeg");
+  background-image: url("5f1fd7a07598c033cb7a4b6e_alu_bg.jpg");
   background-size: cover;
   background-repeat: no-repeat;
   background-color: rgb(189, 183, 183);
+  min-height: 100vh;
+}
+
+.blackboard
+{
+  max-width: 98.5%;
+  min-height: 97vh;
+  background-image: url("Tafel_neu.jpeg");
+  background-size: cover;
+  background-repeat: no-repeat;
   display: flex;
   justify-content: center;
   align-items: center;
-  min-height: 100vh;
   font-family: "EraserDust";
   font-size: 30px;
   color: whitesmoke;
+  margin: auto;
+  position: relative;
+  transform: translateY(1.5%);
 }
 
 .container {

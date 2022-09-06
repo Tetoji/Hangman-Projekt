@@ -28,48 +28,50 @@
   </head>
 
   <body>
-    <div class="card">
-      <div class="container">
-        <b>Menue</b>
-      </div>
-
-      <div class="mb-3 row">
-        <label for="playerInput" class="col-sm-2 col-form-label">
-          Spieler:
-        </label>
-        <div class="col-sm-9">
-          <input
-            list="names"
-            type="text"
-            id="playerInput"
-            minlength="1"
-            maxlength="9"
-            placeholder="Spielername">
-			<datalist id="names">
-                    {% for player in allPlayer %}
-                    <option value="{{player}}">
-                        {% endfor %}
-                </datalist>
+    <div class = "blackboard">
+      <div class="card">
+        <div class="container">
+          <b>Menue</b>
+        </div>
+  
+        <div class="mb-3 row">
+          <label for="playerInput" class="col-sm-2 col-form-label">
+            Spieler:
+          </label>
+          <div class="col-sm-9">
+            <input
+              list="names"
+              type="text"
+              id="playerInput"
+              minlength="1"
+              maxlength="9"
+              placeholder="Spielername">
+        <datalist id="names">
+                      {% for player in allPlayer %}
+                      <option value="{{player}}">
+                          {% endfor %}
+                  </datalist>
+          </div>
+        </div>
+  
+        <div class="buttons">
+          <button
+            type="button"
+            class="playButton"
+            onclick="selectWord()">
+            Spielen
+          </button>
+          <button
+            type="button"
+            class="playOnTimeButton"
+            onclick="window.location.href='http://localhost:8000/game'">
+            Spielen auf Zeit
+          </button>
         </div>
       </div>
-
-      <div class="buttons">
-        <button
-          type="button"
-          class="playButton"
-          onclick="selectWord()">
-          Spielen
-        </button>
-        <button
-          type="button"
-          class="playOnTimeButton"
-          onclick="window.location.href='http://localhost:8000/game'">
-          Spielen auf Zeit
-        </button>
-      </div>
+      <!--transportiert die HTML Variable von Python an die javaScript Datei-->
+      {{ allPlayer|json_script:"allPlayer" }}
+      <script src="{% static 'menue_logik.js' %}"></script>
     </div>
-    <!--transportiert die HTML Variable von Python an die javaScript Datei-->
-    {{ allPlayer|json_script:"allPlayer" }}
-    <script src="{% static 'menue_logik.js' %}"></script>
   </body>
 </html>

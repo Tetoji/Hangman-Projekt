@@ -8,7 +8,7 @@ function checkLetter(event) {
     let cookie = document.cookie;
     let cookieData = cookie.split('=');
     let token = cookieData[ 1 ];
-    let letter = document.getElementById("letterInputField").value.toUpperCase();
+    let letter = document.getElementById("letterInput").value.toUpperCase();
     let checktletter = false;
 
     checkedLettersArray.forEach(entry => {
@@ -21,7 +21,7 @@ function checkLetter(event) {
 
     if (letter !== '' && event.key === 'Enter') {
         if (checktletter) {
-            console.log('this letter was alredy used!');
+            console.log('this letter was already used!');
             document.getElementById('letterInput').value = '';
         }
         else {
