@@ -26,5 +26,20 @@ class Player(models.Model):
     loses = models.SmallIntegerField(default=0)
 
     def __str__(self):
+        return str(self.id) + ' ' + self.name
+
+
+# Model fuer Zwischenablage
+class AktivWord(models.Model): 
+    word = models.CharField(max_length=200)
+    hitLocations = models.CharField(max_length=200)
+    
+    def __str__(self):
         return str(self.id) + ' ' + self.word
 
+class CheckLetters(models.Model): 
+    checkedLetters = models.CharField(max_length=500)
+    fails = models.SmallIntegerField(default=0)
+    
+    def __str__(self):
+        return str(self.id) + ' ' + self.checkedLetters

@@ -1,0 +1,13 @@
+body {
+    background-image: url("Tafel_neu.jpeg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-color: rgb(189, 183, 183);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    font-family: 'Amatic SC';
+    font-size: 30px;
+    color: white;
+}
