@@ -31,12 +31,12 @@
     <div class = "blackboard">
       <div class="card">
         <div class="container">
-          <b>Menue</b>
+          <b>Menu</b>
         </div>
   
         <div class="mb-3 row">
           <label for="playerInput" class="col-sm-2 col-form-label">
-            Spieler:
+            Player:
           </label>
           <div class="col-sm-9">
             <input
@@ -45,7 +45,7 @@
               id="playerInput"
               minlength="1"
               maxlength="9"
-              placeholder="Spielername">
+              placeholder="Playername">
         <datalist id="names">
                       {% for player in allPlayer %}
                       <option value="{{player}}">
@@ -59,13 +59,13 @@
             type="button"
             class="playButton"
             onclick="selectWord()">
-            Spielen
+            Play
           </button>
           <button
             type="button"
             class="playOnTimeButton"
             onclick="window.location.href='http://localhost:8000/game'">
-            Spielen auf Zeit
+            Against the time
           </button>
         </div>
       </div>
