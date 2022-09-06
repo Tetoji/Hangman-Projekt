@@ -36,7 +36,6 @@
 
   <body>
     <div class="header">Hangman</div>
-
     <div class="stuff">
       <div class="letterInput">
         <label for="letterInput" style="color: white">Eingabefeld:</label>
@@ -55,14 +54,14 @@
 
     <div class="wordLines">
       {% for letter in wordLetters %}
-
+      {% if letter != ',' %}
       <div class="letterElement">
         <div class="gridElement">
           <span class="letter">{{letter}}</span>
           <div class="wordLine"></div>
         </div>
       </div>
-
+      {% endif %}
       {% endfor %}
     </div>
 
@@ -86,7 +85,10 @@
         <line x1="140" y1="150" x2="160" y2="180" class="figure-part" />
       </svg>
     </div>
-
+    
+    <!--transportiert die das wordLetters Array in die javaScript Datei-->
+    {{ wordLetters|json_script:"wordLetters" }}
+    {{ checkedLetters|json_script:"checkedLetters" }}
     <script src="{% static 'game_logik.js' %}"></script>
   </body>
 </html>

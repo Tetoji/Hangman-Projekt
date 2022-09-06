@@ -1,5 +1,3 @@
-
-
 function checkLetter(event) {
     const wordLetters = JSON.parse(document.getElementById('wordLetters').textContent);
     console.log(wordLetters)
@@ -10,7 +8,7 @@ function checkLetter(event) {
     let cookie = document.cookie;
     let cookieData = cookie.split('=');
     let token = cookieData[ 1 ];
-    let letter = document.getElementById("letterInput").value.toUpperCase();
+    let letter = document.getElementById("letterInputField").value.toUpperCase();
     let checktletter = false;
 
     checkedLettersArray.forEach(entry => {
