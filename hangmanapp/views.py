@@ -44,6 +44,8 @@ def menue(request):
         selectedWord.word = searchWord.word.upper()
         selectedWord.hitLocations = ''
         checkedLetters.checkedLetters = ''
+        checkedLetters.fails = 0
+        checkedLetters.hits = 0
         selectedWord.save()
         checkedLetters.save()
     
@@ -67,7 +69,7 @@ def game(request):
         hitLocations = ''
         previousLocations = ''
         letterIterator = 0
-        hit = False
+        hit = 0
 
         #hängt eingegebenen Buchstaben an String dran und speichert den String dann in der Datenbank  
         if checkedLetters.checkedLetters != '':
@@ -86,7 +88,7 @@ def game(request):
         for letter in aktivWord.word:
             if letter == checkLetter:
                 #markiert den Treffer
-                hit = True
+                hit = hit + 1
                 if hitLocations == '':
                     hitLocations = str(letterIterator) + '=' + checkLetter
                 else:
@@ -98,8 +100,11 @@ def game(request):
             aktivWord.save()
 
         # falls es keinen Treffer gab wird der FailCounter um 1 erhöht 
-        if (not hit): 
+        if hit == 0: 
             checkedLetters.fails = checkedLetters.fails + 1
+            checkedLetters.save()
+        else:
+            checkedLetters.hits = checkedLetters.hits + hit
             checkedLetters.save()
          
 
@@ -107,6 +112,8 @@ def game(request):
     searchWord = AktivWord.objects.get(id=1)
     checkedLetters = get_object_or_404(CheckLetters, pk=1)
     wordLetters = getLetterArray(searchWord)
+    checkedLettersArray = getcheckedLettersArry(checkedLetters)
+    trys = len(checkedLettersArray)
 
     if checkWin(searchWord):
         return redirect('http://localhost:8000/winGame/')
@@ -114,7 +121,7 @@ def game(request):
         return redirect('http://localhost:8000/loseGame/')
     else:
         # liefert die hangman_game HTML Seite zurück und übergibt an diese das Buchstaben Array
-        return render(request, 'hangman_game.html', {'wordLetters': wordLetters, 'hitlocations': searchWord.hitLocations, 'checkedLetters': checkedLetters.checkedLetters})
+        return render(request, 'hangman_game.html', {'wordLetters': wordLetters, 'checkedLetters': checkedLettersArray, 'trys': trys, 'hits': checkedLetters.hits})
 
 
 def updateGame(request):
@@ -122,7 +129,12 @@ def updateGame(request):
     aktivWord = get_object_or_404(AktivWord, pk=1)
     checkedLetters = get_object_or_404(CheckLetters, pk=1)
     wordLetters = getLetterArray(aktivWord)
-    return render(request, 'hangman_game.html', {'wordLetters': wordLetters, 'hitlocations': aktivWord.hitLocations, 'checkedLetters': checkedLetters.checkedLetters})
+    checkedLettersArray = getcheckedLettersArry(checkedLetters)
+    trys = len(checkedLettersArray)
+    print('trys', trys)
+    print('hits', checkedLetters.hits)
+
+    return render(request, 'hangman_game.html', {'wordLetters': wordLetters, 'checkedLetters': checkedLettersArray, 'trys': trys, 'hits': checkedLetters.hits})
 
 def winGame(request):
     aktivWord = get_object_or_404(AktivWord, pk=1)
@@ -147,6 +159,15 @@ def loseGame(request):
 
     return render(request, 'losepage.html')
 
+
+def getcheckedLettersArry(checkedLetters):
+    lettersArray = []
+
+    for letter in checkedLetters.checkedLetters:
+        if letter != ',':
+            lettersArray.append(letter)
+
+    return sorted(lettersArray) 
 
 
 # liefert das Buchstaben Array

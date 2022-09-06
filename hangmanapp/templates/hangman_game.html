@@ -39,7 +39,7 @@
       <div class="header">Hangman</div>
       <div class="stuff">
         <div class="letterInput">
-          <label for="letterInput" style="color: white">Input field:</label>
+          <label for="letterInput" style="color: white">Eingabefeld:</label>
           <input
             name="letterInput"
             type="text"
@@ -56,7 +56,7 @@
             type="button"
             id="backToMenu"
             onclick="window.location.href='http://localhost:8000/menue'">
-            Abort
+            Zurueck
           </button>
         </div>
       </div>
@@ -84,6 +84,18 @@
           </div>
           {% endif %}
           {% endfor %}
+        </div>
+		
+		<div>
+          {% with hits=hits %}
+          <h1>Treffer: {{ hits }}</h1>
+          {% endwith %}
+        </div>
+  
+        <div>
+          {% with trys=trys %}
+          <h1>Versuche: {{ trys }}</h1>
+          {% endwith %}
         </div>
   
         <div class="game-container">
