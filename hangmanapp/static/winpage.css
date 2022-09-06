@@ -32,3 +32,16 @@ div {
   text-align: center;
   font-size: 10vw;
 }
+
+button {
+  background-color: transparent;
+  color: whitesmoke;
+  border-color: green;
+  border-style: none;
+  font-size: 5vh;
+}
+
+button:hover {
+  font-size: 6vh;
+  font-weight: bold;
+}

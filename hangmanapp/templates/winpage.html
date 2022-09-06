@@ -39,8 +39,15 @@
   <body>
     <div class="blackboard">
       <div class="message">
-        <div>Win!</div>
-        <div>You Win</div>
+        <div>You Won!</div>
+        <div class ="menuButton">
+          <button
+            type="button"
+            id="backToMenu"
+            onclick="window.location.href='http://localhost:8000/menue'">
+            Back to menu
+          </button>
+        </div>
       </div>
     </div>
     <script src="{% static 'menue_logik.js' %}"></script>
