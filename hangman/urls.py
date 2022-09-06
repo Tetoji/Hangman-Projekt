@@ -16,11 +16,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 
-<<<<<<< HEAD
-from hangmanapp.views import game, hangman, loseGame, menue, updateGame, winGame
-=======
 from hangmanapp.views import game, hangman, menue, updateGame
->>>>>>> cef74e3b673ff16c671ee91fbe73601c5f7a5614
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -28,11 +24,6 @@ urlpatterns = [
     path('menue/', menue),
     path('game/', game),
     path('updateGame/', updateGame),
-<<<<<<< HEAD
-    path('winGame/', winGame),
-    path('loseGame/', loseGame),
-=======
->>>>>>> cef74e3b673ff16c671ee91fbe73601c5f7a5614
 ]
 
 admin.site.index_title = "Hangman" 
