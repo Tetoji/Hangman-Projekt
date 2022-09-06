@@ -40,11 +40,14 @@
       <div class="letterInput">
         <label for="letterInput" style="color: white">Eingabefeld:</label>
         <input
+        name="letterInput"
           type="text"
-          id="letterInputField"
+          id="letterInput"
           maxlength="1"
           onkeyup="checkLetter(event)"
-        />
+		  autocomplete="off"
+		  autofocus
+		  onkeyup="checkLetter(event)">
       </div>
       <div class="backButton"><button
         type="button"
@@ -53,7 +56,7 @@
     </div>
 
     <div class="wordLines">
-      {% for letter in wordLetters %}
+      {% for letter in checkLetters %}
       {% if letter != ',' %}
       <div class="letterElement">
         <div class="gridElement">

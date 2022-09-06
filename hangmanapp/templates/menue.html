@@ -34,17 +34,22 @@
       </div>
 
       <div class="mb-3 row">
-        <label for="inputPassword" class="col-sm-2 col-form-label">
+        <label for="playerInput" class="col-sm-2 col-form-label">
           Spieler:
         </label>
         <div class="col-sm-9">
           <input
+            list="names"
             type="text"
-            id="inputPassword"
+            id="playerInput"
             minlength="1"
             maxlength="9"
-            placeholder="Spielername"
-          />
+            placeholder="Spielername">
+			<datalist id="names">
+                    {% for player in allPlayer %}
+                    <option value="{{player}}">
+                        {% endfor %}
+                </datalist>
         </div>
       </div>
 
@@ -52,21 +57,19 @@
         <button
           type="button"
           class="playButton"
-          onclick="window.location.href='http://localhost:8000/game'"
-        >
+          onclick="selectWord()">
           Spielen
         </button>
         <button
           type="button"
           class="playOnTimeButton"
-          onclick="window.location.href='http://localhost:8000/game'"
-        >
+          onclick="window.location.href='http://localhost:8000/game'">
           Spielen auf Zeit
         </button>
       </div>
     </div>
     <!--transportiert die HTML Variable von Python an die javaScript Datei-->
     {{ allPlayer|json_script:"allPlayer" }}
-    <script src="{% static 'logic.js' %}"></script>
+    <script src="{% static 'menue_logik.js' %}"></script>
   </body>
 </html>
