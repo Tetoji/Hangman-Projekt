@@ -1,4 +1,5 @@
 .header {
+<<<<<<< HEAD
     min-width: 100vh;
     text-align: center;
     color: white;
@@ -121,3 +122,127 @@
   {
       display: block;
   }
+=======
+  min-width: 100vh;
+  text-align: center;
+  color: white;
+  font-size: 70px;
+  margin-bottom: 1vw;
+}
+@font-face {
+  font-family: "EraserDust";
+  src: url(EraserDust.ttf) format("truetype");
+}
+
+body {
+  padding: 3vw;
+  background-image: url("Tafel_neu.jpeg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  /* display: flex;
+    justify-content: center;
+    align-items: center; */
+  min-height: 100vh;
+  font-family: "EraserDust";
+}
+
+/* .wordLine {
+    border-color: white;
+    margin-left: 2%;
+    border-width: 20px;
+    width: 5%;
+    opacity: 1;
+} */
+
+.wordLine {
+  background-color: white;
+  grid-area: line;
+  margin-left: 2%;
+  height: 20px;
+}
+
+.wordLines {
+  /* display: flex; */
+}
+
+.stuff{
+  display: flex;
+  margin-bottom: 5vw;
+}
+
+.backButton
+{
+  margin-right: 1vw;
+  display: flex;
+  justify-content: flex-end;
+  color: azure;
+  flex: 1;
+}
+
+.letterInput{
+  font-size: 25px;
+  margin-left: 1vw;
+  flex: 1;
+}
+
+#letterInputField
+{
+  background: transparent;
+  color: whitesmoke;
+  border: 2px;
+  border-style: dashed;
+  padding-left: 2%;
+  margin-left: 2vw;
+}
+
+.letter {
+  color: white;
+  font-size: 50px;
+  grid-area: letter;
+  margin-left: 37%;
+}
+
+/*
+.gridElement {
+  display: grid;
+  grid-template-areas:
+    "letter"
+    "line";
+}
+*/
+
+.letterElement {
+  width: 8%;
+  float: left;
+  margin-left: 1%;
+}
+
+button {
+  background-color: transparent;
+  color: whitesmoke;
+  border-color: green;
+  border-style:none;
+  font-size: 20px;
+}
+
+button:hover{
+  font-size: 25px;
+  font-weight: bold;
+}
+
+.game-container {
+  margin: auto;
+}
+
+.figure-container {
+  fill: transparent;
+  stroke: white;
+  stroke-width: 5px;
+  stroke-linecap: round;
+}
+
+.figure-part
+{
+    display: block;
+}
+>>>>>>> cef74e3b673ff16c671ee91fbe73601c5f7a5614

@@ -1,4 +1,5 @@
 .button {
+<<<<<<< HEAD
     display: flex;
   }
   
@@ -79,3 +80,85 @@
     color: whitesmoke;
     font-size: 20px;
   }
+=======
+  display: flex;
+}
+
+header {
+
+  display: flex;
+  padding-left: 20px;
+  box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.1);
+  color: white;
+}
+
+.card {
+  width: 60%;
+  min-height: 80vh;
+  background: none;
+  border: 0;
+  padding: 1vw;
+}
+
+@font-face {
+  font-family: "EraserDust";
+  src: url(EraserDust.ttf) format("truetype");
+}
+
+body {
+  background-image: url("Tafel_neu.jpeg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-color: rgb(189, 183, 183);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  font-family: "EraserDust";
+  font-size: 30px;
+  color: whitesmoke;
+}
+
+.container {
+  padding: 5% 10%;
+  text-align: center;
+  font-size: 50px;
+}
+
+button {
+  background-color: transparent;
+  color: whitesmoke;
+  border-color: green;
+  border-style:none;
+}
+
+button:hover{
+  font-size: 35px;
+  font-weight: bold;
+}
+
+.buttons {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.buttons .playOnTimeButton {
+  margin-left: 3vw;
+}
+
+#inputPassword
+{
+  background: transparent;
+  color: whitesmoke;
+  width: 100%;
+  border: 2px;
+  border-style: dashed;
+  padding-left: 2%;
+}
+
+input::placeholder
+{
+  color: whitesmoke;
+  font-size: 20px;
+}
+>>>>>>> cef74e3b673ff16c671ee91fbe73601c5f7a5614

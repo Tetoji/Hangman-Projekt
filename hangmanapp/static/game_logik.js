@@ -1,10 +1,14 @@
 
 
 function checkLetter(event) {
+<<<<<<< HEAD
     const wordLetters = JSON.parse(document.getElementById('wordLetters').textContent);
     console.log(wordLetters)
     const checkedLetters = JSON.parse(document.getElementById('checkedLetters').textContent);
     console.log(checkedLetters)
+=======
+    const checkedLetters = JSON.parse(document.getElementById('checkedLetters').textContent);
+>>>>>>> cef74e3b673ff16c671ee91fbe73601c5f7a5614
     const checkedLettersArray = checkedLetters.split(',')
     let formData = new FormData();
     let cookie = document.cookie;
@@ -46,5 +50,8 @@ function checkLetter(event) {
 
 function updateGame() {
     window.location.href = "//localhost:8000/updateGame/";
+<<<<<<< HEAD
     window.location.reload();
+=======
+>>>>>>> cef74e3b673ff16c671ee91fbe73601c5f7a5614
 }
