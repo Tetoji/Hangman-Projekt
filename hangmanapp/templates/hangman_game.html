@@ -61,6 +61,16 @@
         </div>
       </div>
 
+      <div id="snackbar">ungültige Eingabe oder Wiederholung!</div>
+      
+      {% if tipp == 'true' %}
+        <button id ="tippDisabled"
+                disabled
+                onclick="tipp()">1 Tipp</button>
+        {% else %}
+        <button onclick="tipp()">1 Tipp</button>
+        {% endif %}
+
         <div class="wordLines">
           {% for letter in wordLetters %} {% if letter != ',' %}
           <div class="letterElement">
@@ -71,7 +81,7 @@
           </div>
           {% endif %} {% endfor %}
         </div>
-
+        
       <div class = "all">
         <div class="usedLetters">
           Benutze Buchstaben:<br>

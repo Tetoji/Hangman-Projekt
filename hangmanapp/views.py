@@ -2,7 +2,7 @@ from datetime import datetime
 from time import time
 from django.shortcuts import render, redirect,  get_object_or_404
 
-from hangmanapp.models import AktivWord, CheckLetters, GameTime, GameWords, ListItem, Player
+from hangmanapp.models import AktivWord, CheckLetters, GameTime, GameWords, ListItem, Player, Tipp
 #from hangmanapp.static.myClasses import LetterLocationClass
 
 class LetterLocationClass:
@@ -43,9 +43,12 @@ def menue(request):
         selectedWord = get_object_or_404(AktivWord, pk=1)
         checkedLetters = get_object_or_404(CheckLetters, pk=1)
         dataTime = get_object_or_404(GameTime, pk=1)
+        tipp = get_object_or_404(Tipp, pk=1)
         selectedWord.word = searchWord.word.upper()
         selectedWord.hitLocations = ''
         checkedLetters.checkedLetters = ''
+        tipp.used = ''
+        tipp.save()
         checkedLetters.fails = 0
         checkedLetters.hits = 0
         selectedWord.save()
@@ -69,9 +72,12 @@ def game(request):
     if request.method == 'POST':
         # holt den Wert der beim Request mitgegeben wird
         checkLetter = request.POST['letter']
+        isTipp = request.POST['isTipp']
+        print('isTipp: ', isTipp)
         # holt das zuvor selektierte Wort aus der Datenbanktabelle
         aktivWord = get_object_or_404(AktivWord, pk=1)
         checkedLetters = get_object_or_404(CheckLetters, pk=1)
+        tipp = get_object_or_404(Tipp, pk=1)
         hitLocations = ''
         previousLocations = ''
         letterIterator = 0
@@ -105,11 +111,16 @@ def game(request):
             aktivWord.hitLocations = hitLocations + ',' + previousLocations
             aktivWord.save()
 
-        # falls es keinen Treffer gab wird der FailCounter um 1 erhöht 
-        if hit == 0: 
-            checkedLetters.fails = checkedLetters.fails + 1
-            checkedLetters.save()
-        else:
+        if isTipp == '0':
+            # falls es keinen Treffer gab wird der FailCounter um 1 erhöht 
+            if hit == 0:
+                checkedLetters.fails = checkedLetters.fails + 1
+                checkedLetters.save()
+        else: 
+            tipp.used = 'true'
+            tipp.save()
+
+        if hit != 0:
             checkedLetters.hits = checkedLetters.hits + hit
             checkedLetters.save()
          
@@ -117,6 +128,7 @@ def game(request):
     # holt das zuvor selektierte Wort aus der Datenbanktabelle
     searchWord = AktivWord.objects.get(id=1)
     checkedLetters = get_object_or_404(CheckLetters, pk=1)
+    tipp = get_object_or_404(Tipp, pk=1)
     wordLetters = getLetterArray(searchWord)
     checkedLettersArray = getcheckedLettersArry(checkedLetters)
     trys = len(checkedLettersArray)
@@ -130,7 +142,7 @@ def game(request):
         return redirect('http://localhost:8000/loseGame/')
     else:
         # liefert die hangman_game HTML Seite zurück und übergibt an diese das Buchstaben Array
-        return render(request, 'hangman_game.html', {'wordLetters': wordLetters, 'checkedLetters': checkedLettersArray, 'trys': trys, 'hits': checkedLetters.hits, 'fails': fails})
+        return render(request, 'hangman_game.html', {'wordLetters': wordLetters, 'checkedLetters': checkedLettersArray, 'trys': trys, 'hits': checkedLetters.hits, 'fails': fails, 'tipp': tipp.used})
 
 def getGameTime():
     startTime = get_object_or_404(GameTime, pk=1)
@@ -146,17 +158,17 @@ def getGameTime():
     return gameTime 
 
 
-
 def updateGame(request):
     # holt das aktive Wort aus der Datenbanktabelle
     aktivWord = get_object_or_404(AktivWord, pk=1)
     checkedLetters = get_object_or_404(CheckLetters, pk=1)
+    tipp = get_object_or_404(Tipp, pk=1)
     wordLetters = getLetterArray(aktivWord)
     checkedLettersArray = getcheckedLettersArry(checkedLetters)
     trys = len(checkedLettersArray)
     fails = checkedLetters.fails
 
-    return render(request, 'hangman_game.html', {'wordLetters': wordLetters, 'checkedLetters': checkedLettersArray, 'trys': trys, 'hits': checkedLetters.hits, 'fails': fails})
+    return render(request, 'hangman_game.html', {'wordLetters': wordLetters, 'checkedLetters': checkedLettersArray, 'trys': trys, 'hits': checkedLetters.hits, 'fails': fails, 'tipp': tipp.used})
 
 def winGame(request):
     aktivWord = get_object_or_404(AktivWord, pk=1)
@@ -238,6 +250,7 @@ def getLetterArray(aktivWord):
 
     return wordLetters
 
+
 def checkWin(aktivWord):
     isWin = False
     marker = 0
@@ -248,4 +261,3 @@ def checkWin(aktivWord):
         isWin = True
 
     return isWin
-

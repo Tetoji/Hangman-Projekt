@@ -26,4 +26,10 @@ function selectWord() {
         body: formData
     });
     window.location.href = "//localhost:8000/game/";
+    // window.location.reload();
 }
+
+window.addEventListener('locationchange', function () {
+    console.log(window.location.href);
+    location.href = 'http://localhost:8000/winGame/';
+});
