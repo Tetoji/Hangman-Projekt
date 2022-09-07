@@ -61,16 +61,16 @@
         </div>
       </div>
 
-      <div class="wordLines">
-        {% for letter in wordLetters %} {% if letter != ',' %}
-        <div class="letterElement">
-          <div class="gridElement">
-            <span class="letter">{{letter}}</span>
-            <div class="wordLine"></div>
+        <div class="wordLines">
+          {% for letter in wordLetters %} {% if letter != ',' %}
+          <div class="letterElement">
+            <div class="gridElement">
+              <span class="letter">{{letter}}</span>
+              <div class="wordLine"></div>
+            </div>
           </div>
+          {% endif %} {% endfor %}
         </div>
-        {% endif %} {% endfor %}
-      </div>
 
       <div class = "all">
         <div class="usedLetters">
@@ -79,7 +79,9 @@
           {% if letter != ',' %}
           <div class="letterElement2">
               <div class="gridElement">
-                  <span class="letter2">{{letter}},&nbsp; </span>
+                  <div class="letter2">
+                    {{letter}},&nbsp; 
+                  </div>
               </div>
           </div>
           {% endif %}
@@ -103,24 +105,38 @@
         <div class="game-container">
           <svg height="250" width="200" class="figure-container">
             <!-- Rod -->
-            <line x1="60" y1="20" x2="140" y2="20" />
-            <line x1="140" y1="20" x2="140" y2="50" />
-            <line x1="60" y1="20" x2="60" y2="230" />
-            <line x1="20" y1="230" x2="100" y2="230" />
+            <line x1="60" y1="3" x2="140" y2="3" />
+            <line x1="140" y1="0" x2="140" y2="50" />
+            <line x1="60" y1="0" x2="60" y2="230" />
+            <line x1="10" y1="230" x2="110" y2="230" />
 
             {% if fails > 0 %}
             <!-- Head -->
-            <circle cx="140" cy="70" r="20" class="figure-part" />
+            <circle cx="140" cy="80" r="30" class="figure-part" />
             {% endif %}
             
+            {% if fails > 1 %}
             <!-- Body -->
-            <line x1="140" y1="90" x2="140" y2="150" class="figure-part" />
+            <line x1="140" y1="110" x2="140" y2="170" class="figure-part" />
+            {% endif %}
+
             <!-- Arms -->
-            <line x1="140" y1="120" x2="120" y2="100" class="figure-part" />
-            <line x1="140" y1="120" x2="160" y2="100" class="figure-part" />
+            {% if fails > 2 %}
+            <line x1="140" y1="130" x2="110" y2="120" class="figure-part" />
+            {% endif %}
+
+            {% if fails > 3 %}
+            <line x1="140" y1="130" x2="170" y2="120" class="figure-part" />
+            {% endif %}
+            
             <!-- Legs -->
-            <line x1="140" y1="150" x2="120" y2="180" class="figure-part" />
-            <line x1="140" y1="150" x2="160" y2="180" class="figure-part" />
+            {% if fails > 4 %}
+            <line x1="140" y1="170" x2="120" y2="200" class="figure-part" />
+            {% endif %}
+
+            {% if fails > 5 %}
+            <line x1="140" y1="170" x2="160" y2="200" class="figure-part" />
+            {% endif %}
           </svg>
         </div>
       </div>

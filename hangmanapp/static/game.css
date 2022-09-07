@@ -5,6 +5,7 @@
   font-size: 4vw;
   margin-bottom: 1vw;
 }
+
 @font-face {
   font-family: "EraserDust";
   src: url(EraserDust.ttf) format("truetype");
@@ -36,7 +37,6 @@ body {
 
 .wordLine {
   background-color: rgb(232, 232, 232);
-  grid-area: line;
   margin-left: 2%;
   height: 20px;
 }
@@ -72,23 +72,26 @@ body {
 .letter {
   color: rgb(232, 232, 232);
   font-size: 7vh;
-  grid-area: letter;
-  margin-left: 37%;
+  margin: 32%;
 }
 
-.letter2 {
+.letter2{
   color: rgb(232, 232, 232);
   font-size: 7vh;
-  grid-area: letter;
+  line-height: 1;
 }
 
 .wordLines {
+  margin: auto;
   display: flex;
+  width: fit-content;
+  max-width: 92vw;
 }
 
 .letterElement {
   width: 6vw;
-  margin: auto;
+  margin-left: 1vw;
+  margin-right: 1vw;
 }
 
 button {
@@ -112,9 +115,11 @@ button:hover {
   max-width: 20vw;
   min-width: 20vw;
   padding-left: 1vw;
+  margin-right: 2vw;
 }
 
 .game-container {
+ flex: 1;
 }
 
 .figure-container {
@@ -122,6 +127,8 @@ button:hover {
   stroke: rgb(232, 232, 232);
   stroke-width: 5px;
   stroke-linecap: round;
+  margin-left: 40%;
+  margin-right: 40%;
 }
 
 .figure-part {
@@ -138,6 +145,8 @@ button:hover {
 {
   clear: all;
   font-size: 3vw;
+  margin-right: 2vw;
+  line-height: 1;
 }
 
 hr{
