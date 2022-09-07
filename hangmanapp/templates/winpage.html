@@ -40,6 +40,11 @@
     <div class="blackboard">
       <div class="message">
         <div>You Won!</div>
+		    <div>
+        {% with gameTime=gameTime %}
+        <h1>Spielzeit in Sekunden: {{ gameTime }}</h1>
+        {% endwith %}
+    </div>
         <div class ="menuButton">
           <button
             type="button"

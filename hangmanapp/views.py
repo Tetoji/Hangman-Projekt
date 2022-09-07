@@ -1,6 +1,8 @@
+from datetime import datetime
+from time import time
 from django.shortcuts import render, redirect,  get_object_or_404
 
-from hangmanapp.models import AktivWord, CheckLetters, GameWords, ListItem, Player
+from hangmanapp.models import AktivWord, CheckLetters, GameTime, GameWords, ListItem, Player
 #from hangmanapp.static.myClasses import LetterLocationClass
 
 class LetterLocationClass:
@@ -30,7 +32,6 @@ def menue(request):
         # holt Spieler Namen und flag ob neuer Spieler
         player = request.POST['player']
         newPlayer = request.POST['newPlayer']
-        print('newPlayer ', newPlayer)
         # falls neuer Spieler erstelle neuen Datenbankeintrag für Spieler
         if newPlayer != 'false':
             Player.objects.create(name = player)
@@ -41,6 +42,7 @@ def menue(request):
         # Wenn kein Eintag gefunden wird ein 404 Error zurückgegben
         selectedWord = get_object_or_404(AktivWord, pk=1)
         checkedLetters = get_object_or_404(CheckLetters, pk=1)
+        dataTime = get_object_or_404(GameTime, pk=1)
         selectedWord.word = searchWord.word.upper()
         selectedWord.hitLocations = ''
         checkedLetters.checkedLetters = ''
@@ -48,6 +50,10 @@ def menue(request):
         checkedLetters.hits = 0
         selectedWord.save()
         checkedLetters.save()
+        timeStamp = time()
+        timeDate = datetime.fromtimestamp(timeStamp)
+        dataTime.timeStamp = timeDate.strftime("%H:%M:%S")
+        dataTime.save()
     
     allPlayer = Player.objects.all()
     playerArray = []
@@ -115,13 +121,29 @@ def game(request):
     checkedLettersArray = getcheckedLettersArry(checkedLetters)
     trys = len(checkedLettersArray)
 
+    getGameTime()
     if checkWin(searchWord):
         return redirect('http://localhost:8000/winGame/')
     elif checkedLetters.fails >= 6:
+        getGameTime()
         return redirect('http://localhost:8000/loseGame/')
     else:
         # liefert die hangman_game HTML Seite zurück und übergibt an diese das Buchstaben Array
         return render(request, 'hangman_game.html', {'wordLetters': wordLetters, 'checkedLetters': checkedLettersArray, 'trys': trys, 'hits': checkedLetters.hits})
+
+def getGameTime():
+    startTime = get_object_or_404(GameTime, pk=1)
+    endStamp = time()
+    endDate = datetime.fromtimestamp(endStamp)
+    endTime = endDate.strftime("%H:%M:%S")
+    startArray = str(startTime.timeStamp).split(':')
+    endArray = endTime.split(':')
+    startsecends = float(startArray[0]) * 360 + float(startArray[1]) * 60 + float(startArray[2])
+    endsecends = float(endArray[0]) * 360 + float(endArray[1]) * 60 + float(endArray[2])
+    gameTime = endsecends - startsecends
+
+    return gameTime 
+
 
 
 def updateGame(request):
@@ -144,8 +166,9 @@ def winGame(request):
     checkedLetters.checkedLetters = ''
     checkedLetters.fails = 0
     checkedLetters.save()
+    gameTime = getGameTime()
 
-    return render(request, 'winpage.html')
+    return render(request, 'winpage.html', {'gameTime': gameTime})
 
 
 def loseGame(request):
@@ -156,8 +179,9 @@ def loseGame(request):
     checkedLetters.checkedLetters = ''
     checkedLetters.fails = 0
     checkedLetters.save()
+    gameTime = getGameTime()
 
-    return render(request, 'losepage.html')
+    return render(request, 'losepage.html', {'gameTime': gameTime})
 
 
 def getcheckedLettersArry(checkedLetters):

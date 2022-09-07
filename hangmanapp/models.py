@@ -10,7 +10,7 @@ class ListItem(models.Model):
         return str(self.id) + ' ' + self.name
 
 
-# Model fuer zur die Spiel Woerter
+# Model für die Spiel Wörter
 class GameWords(models.Model): 
     word = models.CharField(max_length=200)
     difficulty = models.SmallIntegerField(default=1)
@@ -19,7 +19,7 @@ class GameWords(models.Model):
         return str(self.id) + ' ' + self.word
 
 
-# Model fuer zur die Spieler
+# Model für die Spieler
 class Player(models.Model): 
     name = models.CharField(max_length=200)
     wins = models.SmallIntegerField(default=0)
@@ -29,7 +29,7 @@ class Player(models.Model):
         return str(self.id) + ' ' + self.name
 
 
-# Model fuer Zwischenablage
+# Model für das aktive Wort
 class AktivWord(models.Model): 
     word = models.CharField(max_length=200)
     hitLocations = models.CharField(max_length=200)
@@ -37,6 +37,7 @@ class AktivWord(models.Model):
     def __str__(self):
         return str(self.id) + ' ' + self.word
 
+# Model zur Prüfung der Eingaben
 class CheckLetters(models.Model): 
     checkedLetters = models.CharField(max_length=500)
     fails = models.SmallIntegerField(default=0)
@@ -44,3 +45,10 @@ class CheckLetters(models.Model):
     
     def __str__(self):
         return str(self.id) + ' ' + self.checkedLetters
+
+# Model für die Spielzeit
+class GameTime(models.Model): 
+    timeStamp = models.CharField(max_length=500)
+    
+    def __str__(self):
+        return str(self.id) + ' ' + self.timeStamp
