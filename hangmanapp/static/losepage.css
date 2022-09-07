@@ -7,13 +7,14 @@ body {
   background-image: url("5f1fd7a07598c033cb7a4b6e_alu_bg.jpg");
   background-size: cover;
   background-repeat: no-repeat;
-  background-color: rgb(189, 183, 183);
   min-height: 100vh;
+  position: relative;
+  box-shadow: inset 0px 0px 40px 0px rgb(0, 0, 0);
 }
 
 .blackboard {
-  max-width: 98.5%;
-  min-height: 97vh;
+  width: 97vw;
+  height: 94.5vh;
   background-image: url("Tafel_neu.jpeg");
   background-size: cover;
   background-repeat: no-repeat;
@@ -21,11 +22,12 @@ body {
   justify-content: center;
   align-items: center;
   font-family: "EraserDust";
-  font-size: 30px;
+  font-size: 5vh;
   color: whitesmoke;
   margin: auto;
-  position: relative;
-  transform: translateY(1.5%);
+  position: absolute;
+  top: 0; bottom: 0; left: 0; right: 0;
+  box-shadow: inset 0px 0px 30px 0px rgb(133, 133, 133);
 }
 
 div {
