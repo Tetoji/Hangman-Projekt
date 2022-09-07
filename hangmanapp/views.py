@@ -120,16 +120,17 @@ def game(request):
     wordLetters = getLetterArray(searchWord)
     checkedLettersArray = getcheckedLettersArry(checkedLetters)
     trys = len(checkedLettersArray)
+    fails = checkedLetters.fails
 
-    getGameTime()
     if checkWin(searchWord):
+        getGameTime()
         return redirect('http://localhost:8000/winGame/')
     elif checkedLetters.fails >= 6:
         getGameTime()
         return redirect('http://localhost:8000/loseGame/')
     else:
         # liefert die hangman_game HTML Seite zurück und übergibt an diese das Buchstaben Array
-        return render(request, 'hangman_game.html', {'wordLetters': wordLetters, 'checkedLetters': checkedLettersArray, 'trys': trys, 'hits': checkedLetters.hits})
+        return render(request, 'hangman_game.html', {'wordLetters': wordLetters, 'checkedLetters': checkedLettersArray, 'trys': trys, 'hits': checkedLetters.hits, 'fails': fails})
 
 def getGameTime():
     startTime = get_object_or_404(GameTime, pk=1)
@@ -153,10 +154,9 @@ def updateGame(request):
     wordLetters = getLetterArray(aktivWord)
     checkedLettersArray = getcheckedLettersArry(checkedLetters)
     trys = len(checkedLettersArray)
-    print('trys', trys)
-    print('hits', checkedLetters.hits)
+    fails = checkedLetters.fails
 
-    return render(request, 'hangman_game.html', {'wordLetters': wordLetters, 'checkedLetters': checkedLettersArray, 'trys': trys, 'hits': checkedLetters.hits})
+    return render(request, 'hangman_game.html', {'wordLetters': wordLetters, 'checkedLetters': checkedLettersArray, 'trys': trys, 'hits': checkedLetters.hits, 'fails': fails})
 
 def winGame(request):
     aktivWord = get_object_or_404(AktivWord, pk=1)
@@ -226,14 +226,14 @@ def getLetterArray(aktivWord):
                     wordLetters.append(letterLocation.letter)
                     marker = 1
             if marker == 0:
-                wordLetters.append('0')
+                wordLetters.append('')
             marker = 0
             iterator = iterator + 1
 
     else:        
         # zählt die Buchstaben im Wort und speichert diese im Array
         for letter in aktivWord.word:
-            wordLetters.append('0')
+            wordLetters.append('')
             iterator = iterator + 1
 
     return wordLetters

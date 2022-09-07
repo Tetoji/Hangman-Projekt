@@ -85,17 +85,19 @@
           {% endif %}
           {% endfor %}
         </div>
-		
-		<div>
-          {% with hits=hits %}
-          <h1>Treffer: {{ hits }}</h1>
-          {% endwith %}
-        </div>
-  
-        <div>
-          {% with trys=trys %}
-          <h1>Versuche: {{ trys }}</h1>
-          {% endwith %}
+
+        <div class ="hitsTrys">
+          <div>
+            {% with hits=hits %}
+            Treffer: {{ hits }}
+            {% endwith %}
+          </div>
+          <hr/>
+          <div>
+            {% with trys=trys %}
+            Versuche: {{ trys }}
+            {% endwith %}
+          </div>
         </div>
   
         <div class="game-container">
@@ -105,9 +107,12 @@
             <line x1="140" y1="20" x2="140" y2="50" />
             <line x1="60" y1="20" x2="60" y2="230" />
             <line x1="20" y1="230" x2="100" y2="230" />
-  
+
+            {% if fails > 0 %}
             <!-- Head -->
             <circle cx="140" cy="70" r="20" class="figure-part" />
+            {% endif %}
+            
             <!-- Body -->
             <line x1="140" y1="90" x2="140" y2="150" class="figure-part" />
             <!-- Arms -->
