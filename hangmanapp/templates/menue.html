@@ -35,7 +35,7 @@
         </div>
   
         <div class="mb-3 row">
-            Player:
+            Spieler:
           <div class="col-sm-9">
             <input
               list="names"
@@ -43,7 +43,7 @@
               id="playerInput"
               minlength="1"
               maxlength="9"
-              placeholder="Playername">
+              placeholder="Spielername">
         <datalist id="names">
                       {% for player in allPlayer %}
                       <option value="{{player}}">
@@ -57,13 +57,13 @@
             type="button"
             class="playButton"
             onclick="selectWord()">
-            Play
+            Spielen
           </button>
           <button
             type="button"
             class="playOnTimeButton"
             onclick="window.location.href='http://localhost:8000/game'">
-            Against the time
+            Zeitspiel
           </button>
         </div>
       </div>
