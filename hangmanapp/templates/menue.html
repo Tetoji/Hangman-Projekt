@@ -28,41 +28,33 @@
   </head>
 
   <body>
-    <div class = "blackboard">
+    <div class="blackboard">
       <div class="card">
         <div class="container">
-          <b>Menu</b>
+          <b>Hangman</b>
+        <div class="menuLabel">Menu</div>
         </div>
-  
-        <div class="mb-3 row">
-            Spieler:
-          <div class="col-sm-9">
-            <input
-              list="names"
-              type="text"
-              id="playerInput"
-              minlength="1"
-              maxlength="9"
-              placeholder="Spielername">
+        <input
+          list="names"
+          type="text"
+          id="playerInput"
+          minlength="1"
+          maxlength="9"
+          placeholder="Spielername"
+        />
         <datalist id="names">
-                      {% for player in allPlayer %}
-                      <option value="{{player}}">
-                          {% endfor %}
-                  </datalist>
-          </div>
-        </div>
-  
+          {% for player in allPlayer %}
+          <option value="{{player}}">{% endfor %}</option>
+        </datalist>
         <div class="buttons">
-          <button
-            type="button"
-            class="playButton"
-            onclick="selectWord()">
+          <button type="button" class="playButton" onclick="selectWord()">
             Spielen
           </button>
           <button
             type="button"
             class="playOnTimeButton"
-            onclick="window.location.href='http://localhost:8000/game'">
+            onclick="window.location.href='http://localhost:8000/game'"
+          >
             Zeitspiel
           </button>
         </div>

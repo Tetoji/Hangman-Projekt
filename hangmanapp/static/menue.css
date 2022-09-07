@@ -41,6 +41,8 @@ body {
   background: none;
   border: 0;
   padding: 1vw;
+  align-items: center;
+  align-content: center;
 }
 
 .container {
@@ -73,14 +75,19 @@ button:hover{
 {
   background: transparent;
   color: rgb(232, 232, 232);
-  width: 100%;
+  width: 90%;
   border: 2px;
   border-style: dashed;
   padding-left: 2%;
+  margin-bottom: 3%;
 }
 
 input::placeholder
 {
   color: rgba(157, 157, 157, 0.72);
+  font-size: 5vh;
+}
+
+.menuLabel{
   font-size: 5vh;
 }
