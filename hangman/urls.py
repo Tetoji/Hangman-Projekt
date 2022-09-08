@@ -16,9 +16,10 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 
-from hangmanapp.views import game, hangman, loseGame, menue, updateGame, winGame
+from hangmanapp.views import game, hangman, loseGame, menue, updateGame, winGame, index
 
 urlpatterns = [
+    path("", index),
     path('admin/', admin.site.urls),
     path('hangman/', hangman),
     path('menue/', menue),
