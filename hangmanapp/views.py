@@ -25,6 +25,8 @@ def hangman(request):
     all_items = ListItem.objects.all()
     return render(request, 'hangman_oberflaeche.html', {'all_items': all_items})
 
+def index(request):
+    return redirect(menue)
 
 def menue(request):
     # bei Post request wird der folgende Code ausgeführt
