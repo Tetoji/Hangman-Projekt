@@ -26,6 +26,10 @@ def hangman(request):
     return render(request, 'hangman_oberflaeche.html', {'all_items': all_items})
 
 
+def index(request):
+    return redirect(menue)
+    
+
 def menue(request):
     # bei Post request wird der folgende Code ausgeführt
     if request.method == 'POST':
