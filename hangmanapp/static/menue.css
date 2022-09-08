@@ -69,6 +69,16 @@ button:hover{
 
 .buttons .playOnTimeButton {
   margin-left: 3vw;
+  position: relative;
+}
+
+.playOnTimeButton[title]:hover::after { /* Für Hover Effekt Zeitspiel */
+  content: attr(title);
+  position: absolute;
+  top: 100%;
+  left: 0;
+  color: rgb(206, 223, 59);
+  font-size: 4vh;
 }
 
 #playerInput
